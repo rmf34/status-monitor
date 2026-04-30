@@ -1,0 +1,7 @@
+{
+  "page": {"url": "https://example.statuspage.io"},
+  "components": [
+    {"name": "Component A", "status": "major_outage"}
+  ],
+  "incidents": []
+}

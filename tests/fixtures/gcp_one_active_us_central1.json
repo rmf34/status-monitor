@@ -1,0 +1,15 @@
+[
+  {
+    "id": "fake-active-uc1",
+    "begin": "2026-04-30T00:00:00+00:00",
+    "end": null,
+    "external_desc": "Active incident in us-central1",
+    "severity": "medium",
+    "affected_products": [{"title": "Cloud Run", "id": "x"}],
+    "currently_affected_locations": [
+      {"title": "Iowa (us-central1)", "id": "us-central1"}
+    ],
+    "previously_affected_locations": [],
+    "uri": "/incidents/fake-active-uc1"
+  }
+]

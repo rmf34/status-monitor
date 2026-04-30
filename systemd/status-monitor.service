@@ -1,0 +1,17 @@
+[Unit]
+Description=Status Monitor (GCP / GitHub / Anthropic tray indicator)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# The placeholder on the ExecStart line is replaced by install_service.sh
+# with the absolute path of daemon.py at install time. If you copy this
+# file by hand, substitute the path yourself.
+ExecStart=/usr/bin/python3 __DAEMON_PATH__
+Restart=on-failure
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=graphical-session.target

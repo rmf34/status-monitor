@@ -1,0 +1,104 @@
+# Maps gcloud API names (from `gcloud services list --enabled`) to GCP
+# status-page product titles. Titles must match exactly — they're how the
+# incidents feed identifies affected products.
+#
+# Reference: https://status.cloud.google.com/products.json
+# Last reviewed: 2026-04-30
+
+# Compute / Containers
+appengine.googleapis.com:           Google App Engine
+cloudfunctions.googleapis.com:      Google Cloud Functions
+compute.googleapis.com:             Google Compute Engine
+container.googleapis.com:           Google Kubernetes Engine
+run.googleapis.com:                 Cloud Run
+
+# Networking
+certificatemanager.googleapis.com:  Certificate Manager
+dns.googleapis.com:                 Google Cloud DNS
+iap.googleapis.com:                 Google Cloud Identity-Aware Proxy
+loadbalancing.googleapis.com:       Cloud Load Balancing
+networkconnectivity.googleapis.com: Network Connectivity Center
+networkmanagement.googleapis.com:   Google Cloud Networking
+networkservices.googleapis.com:     Google Cloud Networking
+networksecurity.googleapis.com:     Google Cloud Networking
+servicenetworking.googleapis.com:   Google Cloud Networking
+vpcaccess.googleapis.com:           Google Cloud Networking
+
+# Storage
+file.googleapis.com:                Cloud Filestore
+storage.googleapis.com:             Google Cloud Storage
+storage-api.googleapis.com:         Google Cloud Storage
+storage-component.googleapis.com:   Google Cloud Storage
+storagetransfer.googleapis.com:     Storage Transfer Service
+
+# Databases
+alloydb.googleapis.com:             AlloyDB for PostgreSQL
+bigtable.googleapis.com:            Google Cloud Bigtable
+bigtableadmin.googleapis.com:       Google Cloud Bigtable
+firestore.googleapis.com:           Cloud Firestore
+memcache.googleapis.com:            Memorystore for Memcached
+redis.googleapis.com:               Memorystore for Redis
+spanner.googleapis.com:             Cloud Spanner
+sqladmin.googleapis.com:            Google Cloud SQL
+
+# Data / Analytics
+bigquery.googleapis.com:            Google BigQuery
+bigquerystorage.googleapis.com:     Google BigQuery
+bigquerydatatransfer.googleapis.com: BigQuery Data Transfer Service
+composer.googleapis.com:            Google Cloud Composer
+datacatalog.googleapis.com:         Data Catalog
+dataflow.googleapis.com:            Google Cloud Dataflow
+dataform.googleapis.com:            Dataform
+dataplex.googleapis.com:            Dataplex
+dataproc.googleapis.com:            Google Cloud Dataproc
+datastream.googleapis.com:          Datastream
+pubsub.googleapis.com:              Google Cloud Pub/Sub
+pubsublite.googleapis.com:          Pub/Sub Lite
+
+# Build / Deploy / Source
+artifactregistry.googleapis.com:    Artifact Registry
+clouddeploy.googleapis.com:         Google Cloud Deploy
+cloudbuild.googleapis.com:          Cloud Build
+containerregistry.googleapis.com:   Container Registry
+sourcerepo.googleapis.com:          Cloud Source Repositories
+
+# Security / Identity
+binaryauthorization.googleapis.com: Binary Authorization
+cloudasset.googleapis.com:          Cloud Asset Inventory
+cloudkms.googleapis.com:            Cloud Key Management Service
+dlp.googleapis.com:                 Cloud Data Loss Prevention
+iam.googleapis.com:                 Identity and Access Management
+iamcredentials.googleapis.com:      Identity and Access Management
+privateca.googleapis.com:           Certificate Authority Service
+secretmanager.googleapis.com:       Secret Manager
+
+# Observability
+clouddebugger.googleapis.com:       Cloud Debugger
+cloudprofiler.googleapis.com:       Cloud Profiler
+cloudtrace.googleapis.com:          Cloud Trace
+errorreporting.googleapis.com:      Cloud Logging
+logging.googleapis.com:             Cloud Logging
+monitoring.googleapis.com:          Cloud Monitoring
+
+# AI / ML
+aiplatform.googleapis.com:          Vertex AI Online Prediction
+dialogflow.googleapis.com:          Dialogflow ES
+documentai.googleapis.com:          Document AI
+generativelanguage.googleapis.com:  Vertex Gemini API
+language.googleapis.com:            Cloud Natural Language API
+ml.googleapis.com:                  Cloud Machine Learning
+notebooks.googleapis.com:           Vertex AI Workbench User Managed Notebooks
+speech.googleapis.com:              Speech-to-Text
+texttospeech.googleapis.com:        Text-to-Speech
+translate.googleapis.com:           Cloud Translation
+videointelligence.googleapis.com:   Video Intelligence API
+vision.googleapis.com:              Cloud Vision
+
+# Application / Integration
+apigateway.googleapis.com:          API Gateway
+apigee.googleapis.com:              Apigee
+cloudscheduler.googleapis.com:      Google Cloud Scheduler
+cloudtasks.googleapis.com:          Google Cloud Tasks
+endpoints.googleapis.com:           Cloud Endpoints
+eventarc.googleapis.com:            Eventarc
+workflows.googleapis.com:           Cloud Workflows

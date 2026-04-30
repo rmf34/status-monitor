@@ -1,0 +1,15 @@
+{
+  "page": {"url": "https://example.statuspage.io"},
+  "components": [
+    {"name": "Component A", "status": "operational"}
+  ],
+  "incidents": [
+    {
+      "name": "Investigating thing",
+      "status": "investigating",
+      "impact": "major",
+      "shortlink": "https://stspg.io/abc",
+      "components": [{"name": "Component A"}]
+    }
+  ]
+}
