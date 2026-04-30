@@ -19,3 +19,6 @@ env/
 
 # Live config (user-specific; use config.example.yaml as the template)
 config.yaml
+
+# Local working notes (not for the repo)
+todo.md
