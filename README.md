@@ -339,14 +339,21 @@ the test fails loudly. Refresh the snapshot with:
 
 ## Potentially supported services (future)
 
-The current pollers cover GCP, GitHub, and Anthropic. Two feed shapes the
-project already understands, so most additions are config-and-glue:
+> **None of the services in this section are implemented yet.** The list
+> below is a roadmap, not a config menu. The current pollers cover only
+> GCP, GitHub, and Anthropic. If you want one of these added (or
+> something that is not listed), please [open an
+> issue](https://github.com/rmf34/status-monitor/issues/new) so demand
+> can be tracked.
+
+Two feed shapes the project already understands, so most additions would
+be config-and-glue:
 
 - **[Statuspage v2](https://developer.statuspage.io/)** (Atlassian's
-  product, exposed at `/api/v2/summary.json` on every customer page) —
+  product, exposed at `/api/v2/summary.json` on every customer page):
   same shape as GitHub / Anthropic. Drop-in: new pollers entry plus a
   config block.
-- **Custom JSON / RSS** (e.g. GCP `incidents.json`) — small per-source
+- **Custom JSON / RSS** (e.g. GCP `incidents.json`): small per-source
   parser modeled on `poll_gcp`.
 
 ### Tier 1 — universal blast radius
@@ -367,10 +374,11 @@ itself breaks. Worth supporting first.
   but in that case Stripe down is revenue-down and indistinguishable
   from the product itself being down.
 
-### Tier 2 — opt in if you use it
+### Tier 2 — request if you use it
 
-These only matter if they are in your specific stack. Pick the one or
-two you actually depend on; skip the rest.
+These only matter if they are in your specific stack. None are wired up
+today; if one is in your daily critical path, file an issue and it can
+be prioritized.
 
 | Category              | Services                                                      | Format        |
 |-----------------------|---------------------------------------------------------------|---------------|
