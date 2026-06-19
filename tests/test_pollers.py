@@ -210,14 +210,42 @@ class TestPollStatuspage:
                 "url", "Test", ["Component A"], "page")
         assert issues == []
 
-    def test_open_incident_emits(self):
+    def test_open_incident_emits_when_component_degraded(self):
+        # Component is actually degraded → incident surfaces.
+        with self._patch_feed("statuspage_incident_degraded_component.json"):
+            issues = pollers.poll_statuspage(
+                "url", "Test", ["Component A"], "page")
+        inc_issues = [i for i in issues if i["kind"] == "incident"]
+        assert len(inc_issues) == 1
+        assert "investigating thing" in inc_issues[0]["summary"].lower()
+
+    def test_incident_level_from_component_status_not_impact(self):
+        # Fixture has impact=major but component is degraded_performance → minor.
+        # We derive level from the component, not the headline impact field.
+        with self._patch_feed("statuspage_incident_degraded_component.json"):
+            issues = pollers.poll_statuspage(
+                "url", "Test", ["Component A"], "page")
+        inc_issues = [i for i in issues if i["kind"] == "incident"]
+        assert inc_issues[0]["level"] == "minor"
+
+    def test_incident_level_falls_back_to_impact_when_component_not_in_feed(self):
+        # Top-level components list is empty, so watched_component_levels is empty
+        # and the code falls back to the incident's impact field.
+        with self._patch_feed("statuspage_incident_unknown_component.json"):
+            issues = pollers.poll_statuspage(
+                "url", "Test", ["Component A"], "page")
+        inc_issues = [i for i in issues if i["kind"] == "incident"]
+        assert len(inc_issues) == 1
+        assert inc_issues[0]["level"] == "major"
+
+    def test_incident_suppressed_when_components_operational(self):
+        # Fixture has impact=major but all watched components are operational
+        # (mirrors the Anthropic Fable/Mythos suspension incident).
         with self._patch_feed("statuspage_open_incident.json"):
             issues = pollers.poll_statuspage(
                 "url", "Test", ["Component A"], "page")
-        kinds = {i["kind"] for i in issues}
-        assert "incident" in kinds
-        inc_issues = [i for i in issues if i["kind"] == "incident"]
-        assert "investigating thing" in inc_issues[0]["summary"].lower()
+        incident_issues = [i for i in issues if i["kind"] == "incident"]
+        assert incident_issues == []
 
     def test_feed_unreachable_emits_info(self):
         with patch.object(pollers, "fetch_json", side_effect=OSError("nope")):

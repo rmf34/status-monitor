@@ -175,8 +175,24 @@ def poll_statuspage(url: str, label: str, watched: list[str], page_url: str) -> 
         watched_hits = affected & watched_set
         if not watched_hits:
             continue
+        # Use current component statuses rather than the incident's headline
+        # impact. An open incident whose watched components are all operational
+        # does not warrant an alert (e.g. a model-access suspension that leaves
+        # the API endpoint itself serving normally).
+        watched_component_levels = [
+            _statuspage_status_to_level(components_by_name[name].get("status", "operational"))
+            for name in watched_hits
+            if name in components_by_name
+        ]
+        level = (
+            LEVEL_NAMES[max(LEVELS.get(s, 0) for s in watched_component_levels)]
+            if watched_component_levels
+            else _statuspage_impact_to_level(inc.get("impact", "minor"))
+        )
+        if level == "ok":
+            continue
         issues.append({
-            "level": _statuspage_impact_to_level(inc.get("impact", "minor")),
+            "level": level,
             "project": label,
             "summary": f"{inc.get('name', 'incident')} ({', '.join(sorted(watched_hits))})",
             "url": inc.get("shortlink") or page_url,
